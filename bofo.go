@@ -41,22 +41,6 @@ type Memory struct {
 	ptr  int16
 }
 
-func (data *Memory) next() {
-	data.ptr++
-}
-
-func (data *Memory) prev() {
-	data.ptr--
-}
-
-func (data *Memory) inc() {
-	data.bank[data.ptr]++
-}
-
-func (data *Memory) dec() {
-	data.bank[data.ptr]--
-}
-
 func main() {
 	if len(os.Args) < 2 {
 		fmt.Println("Usage: %s /path/to/script.bf", os.Args[0])
@@ -77,13 +61,13 @@ func main() {
 	for script.nextOp() {
 		switch script.program[script.ptr] {
 		case '>':
-			data.next()
+			data.ptr++
 		case '<':
-			data.prev()
+			data.ptr--
 		case '+':
-			data.inc()
+			data.bank[data.ptr]++
 		case '-':
-			data.dec()
+			data.bank[data.ptr]--
 		case '.':
 			fmt.Print(string(data.bank[data.ptr]))
 		case ',':
