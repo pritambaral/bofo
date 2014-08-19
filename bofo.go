@@ -43,7 +43,7 @@ type Memory struct {
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Println("Usage: %s /path/to/script.bf", os.Args[0])
+		fmt.Println("Usage:", os.Args[0], "/path/to/script.bf")
 		os.Exit(2)
 	}
 
