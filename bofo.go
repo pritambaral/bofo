@@ -29,7 +29,7 @@ func initScript(filepath string) (script *Script, err error) {
 }
 
 func (script *Script) nextOp() bool {
-	if script.ptr >= script.max {
+	if script.ptr > script.max {
 		return false
 	}
 	script.ptr++
